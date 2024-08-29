@@ -1,7 +1,7 @@
 let body = document.querySelector('body');
 let h1 = document.createElement('h1');
 h1.innerText = 'Sozhavaram Srivatsan';
-h1.className = 'page-title';
+h1.className = 'name';
 body.appendChild(h1);
 
 let createSection = (className) => {
@@ -39,13 +39,13 @@ body.appendChild(aboutSection);
 let skillsSection = createSection('skills-section');
 let skillsHeading = createSubHeading('Skills Known');
 let skillsList = document.createElement('ul');
-skillsList.className = 'skills-list';
+skillsList.className = 'my-details';
 
 let skills = ['HTML', 'CSS', 'JS', 'NodeJS', 'React'];
 
 skills.forEach((skill) => {
   let item = document.createElement('li');
-  item.className = 'skills-item';
+  item.className = 'detail';
   item.textContent = skill;
   skillsList.appendChild(item);
 });
@@ -54,3 +54,12 @@ skillsSection.appendChild(skillsHeading);
 skillsSection.appendChild(skillsList);
 
 body.appendChild(skillsSection);
+
+let timer = document.createElement('p');
+timer.className = 'timer';
+setInterval(() => {
+  let date = new Date(Date.now());
+  timer.textContent = `Time : ${date}`;
+}, 1000);
+
+body.appendChild(timer);

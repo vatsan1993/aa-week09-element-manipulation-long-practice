@@ -1,0 +1,32 @@
+.name{
+    background-color: #006D77;
+    color: white;
+
+    padding: 10px;
+}
+
+.sub-heading{
+    background-color: #83C5BE;
+    padding: 5px 10px;
+}
+
+.my-details{
+    border: 2px solid #83C5BE;
+    list-style: none;
+    padding: 10px;
+    background-color: #EDF6F9;
+    border-radius: 10px;
+}
+.detail{
+    width: 100px;
+    height: 20px;
+}
+.detail:hover{
+    background-color: #83C5BE;
+}
+
+.about{
+    background-color: #EDF6F9;
+    padding: 20px;
+    border-radius: 10px;
+}
