@@ -30,3 +30,21 @@
     padding: 20px;
     border-radius: 10px;
 }
+
+.content-section{
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.propic{
+    margin-top: 15px;
+    border-radius: 10px;
+    width: 300px;
+    height: 300px;
+}
+
+.timer, .count-down{
+    background-color: #EDF6F9;
+    padding: 10px;
+}

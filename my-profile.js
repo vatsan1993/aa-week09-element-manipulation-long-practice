@@ -17,6 +17,8 @@ let createSubHeading = (content) => {
   return subHeading;
 };
 
+let contentSection = createSection('content-section');
+
 let aboutSection = createSection('about-section');
 
 let aboutHeading = createSubHeading('About Me');
@@ -31,10 +33,18 @@ about2.className = 'about';
 about2.textContent =
   "Over the years, I have collaborated with cross-functional teams to develop innovative products that enhance user experiences and drive business growth. I am committed to staying updated with the latest industry trends and best practices, which allows me to incorporate modern and effective techniques into my work. Beyond coding, I value clear communication and teamwork, believing that the best solutions emerge from collaborative efforts and diverse perspectives. I'm excited to contribute my skills and enthusiasm to create impactful digital experiences.";
 
-aboutSection.appendChild(aboutHeading);
+body.appendChild(aboutHeading);
 aboutSection.appendChild(about1);
 aboutSection.appendChild(about2);
-body.appendChild(aboutSection);
+
+let profileImg = document.createElement('img');
+profileImg.src = './propic.jpg';
+profileImg.className = 'propic';
+
+contentSection.appendChild(aboutSection);
+contentSection.appendChild(profileImg);
+
+body.appendChild(contentSection);
 
 let skillsSection = createSection('skills-section');
 let skillsHeading = createSubHeading('Skills Known');
@@ -56,10 +66,45 @@ skillsSection.appendChild(skillsList);
 body.appendChild(skillsSection);
 
 let timer = document.createElement('p');
-timer.className = 'timer';
 setInterval(() => {
   let date = new Date(Date.now());
-  timer.textContent = `Time : ${date}`;
+  timer.textContent = `I live in City, State, and it's currently ${date.toLocaleTimeString()} here`;
 }, 1000);
 
 body.appendChild(timer);
+
+timer.classList.add('timer');
+
+about2.outerHTML =
+  "<div>Over the years, I have collaborated with cross-functional teams to develop innovative products that enhance user experiences and drive business growth. I am committed to staying updated with the latest industry trends and best practices, which allows me to incorporate modern and effective techniques into my work. Beyond coding, I value clear communication and teamwork, believing that the best solutions emerge from collaborative efforts and diverse perspectives. I'm excited to contribute my skills and enthusiasm to create impactful digital experiences.</div>";
+
+let countDownTimer = document.createElement('p');
+countDownTimer.classList.add('count-down');
+body.appendChild(countDownTimer);
+
+let targetTime = new Date();
+// targetTime.setHours(targetTime.getHours() + 1);
+targetTime.setMinutes(targetTime.getMinutes() + 1);
+console.log(targetTime);
+
+let interval = setInterval(() => {
+  let now = new Date();
+
+  console.log(now);
+
+  let diffInMs = targetTime.getTime() - now.getTime();
+  let hours = Math.floor(diffInMs / (1000 * 60 * 60));
+  let minutes = Math.floor((diffInMs % (1000 * 60 * 60)) / (1000 * 60));
+  let seconds = Math.floor((diffInMs % (1000 * 60)) / 1000);
+
+  // Format the time as a string "hh:mm:ss"
+  let timeString = `${String(hours).padStart(2, '0')}:${String(
+    minutes
+  ).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+  countDownTimer.innerText = timeString;
+
+  if (diffInMs < 0) {
+    clearInterval(interval);
+    countDownTimer.textContent = 'Expired';
+  }
+}, 1000);
